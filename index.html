@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    </head>
+    <body>
+    <button onclick="gettronweb()">Can you get tronweb from tronlink?</button>
+    <script>
+        function gettronweb(){
+            console.log(window.tronWeb)
+            if(window.tronWeb && window.tronWeb.defaultAddress.base58){
+                document.write("Yes, catch it:",window.tronWeb.defaultAddress.base58)
+            }
+        }
+        window.onload = function() {
+            console.log('strtat')
+  if (!window.tronWeb) {
+    const HttpProvider = TronWeb.providers.HttpProvider;
+    const fullNode = new HttpProvider('https://api.trongrid.io');
+    const solidityNode = new HttpProvider('https://api.trongrid.io');
+    const eventServer = 'https://api.trongrid.io/';
+    
+    const tronWeb = new TronWeb(
+        fullNode,
+        solidityNode,
+        eventServer,
+    );
+    window.tronWeb = tronWeb;
+  }
+};
+    </script>
+    </body>
+</html>
